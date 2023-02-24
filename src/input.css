@@ -1,0 +1,30 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@media(min-width: 1200px){
+    .container{
+        max-width: 1230px;
+    }
+}
+
+
+/* @media(max-width: 768px){
+    .logo{
+        max-width: 150px;
+    }
+} */
+
+/* .banner{
+    background: linear-gradient(85.17deg, #3A75FF -16.16%, rgba(58, 117, 255, 0) 65.31%), linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("../dist/img/banner.png");
+    background-blend-mode: multiply, normal, normal;
+    mix-blend-mode: multiply;
+    
+} */
+
+
