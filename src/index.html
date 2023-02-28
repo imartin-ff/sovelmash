@@ -12,7 +12,7 @@
             <div class="header__inner flex justify-between py-4">
                 <img src="../dist/img/logo.png" alt="" class="logo max-w-[150px] md:max-w-none">
 
-                <button class="language flex items-center">
+                <button class="language flex items-center relative">
                     <div class="icon p-2 rounded-xl bg-white mr-2">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 18C5.58857 18 2 14.4177 2 10.0141C2 5.61044 5.58865 2.02808 10 2.02808C14.4113 2.02808 18 5.61044 18 10.0141C17.9772 14.4177 14.4113 18 10 18ZM10 3.3971C6.34278 3.3971 3.37143 6.36336 3.37143 10.0141C3.37143 13.6649 6.3429 16.631 10 16.631C13.6572 16.631 16.6286 13.6647 16.6286 10.0141C16.6286 6.36324 13.6573 3.3971 10 3.3971Z" fill="#E55E33"/>
@@ -23,10 +23,57 @@
                         </svg>
                     </div>
 
-                    <span class="text-dark text-xs font-medium md:text-base">Россия</span>
-                   
+                    <span class="text-dark text-xs font-medium md:text-base language-value">Россия</span>
+
+                    <svg class="close hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 18L18 6M6 6L18 18" stroke="#EA5E20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                         
+
+                    <div id="dropdown" class="z-10 absolute top-14 right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-36 ">
+                        <ul class="py-2 text-sm text-gray-700">
+                          <li>
+                            <a href="#" class="flex items-center gap-3 justify-between px-4 py-2 hover:bg-light-pink  text-right hover:text-orange" data-value="Русский">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 12.4L3 8.4L4.4 7L7 9.6L12.6 4L14 5.4L7 12.4Z" fill="#E55E33"/>
+                                </svg>
+                                Русский
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="flex items-center gap-3 justify-between px-4 py-2 hover:bg-light-pink text-right hover:text-orange" data-value="English">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 12.4L3 8.4L4.4 7L7 9.6L12.6 4L14 5.4L7 12.4Z" fill="#E55E33"/>
+                                </svg>
+
+                                English
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="flex items-center gap-3 justify-between px-4 py-2 hover:bg-light-pink  text-right hover:text-orange" data-value="Deutsch">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 12.4L3 8.4L4.4 7L7 9.6L12.6 4L14 5.4L7 12.4Z" fill="#E55E33"/>
+                                </svg>
+
+                                Deutsch
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="flex items-center gap-3 justify-between px-4 py-2 hover:bg-light-pink text-right hover:text-orange" data-value="Français">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 12.4L3 8.4L4.4 7L7 9.6L12.6 4L14 5.4L7 12.4Z" fill="#E55E33"/>
+                                </svg>
+
+                                Français
+                            </a>
+                          </li>
+                        </ul>
+                    </div>
+                    
+
                 </button>
+
+                
             </div>
         </div>
   </header>
@@ -175,5 +222,37 @@
         </div>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll(".language #dropdown li a").forEach(item => {
+        item.addEventListener("click", function(e){
+            e.preventDefault();
+            document.querySelectorAll(".language #dropdown li a").forEach(link => link.classList.remove("selected"));
+            this.classList.add("selected");
+            document.querySelector(".language-value").innerHTML = this.getAttribute("data-value");
+            
+           
+        })
+    })
+
+    document.querySelector(".language").addEventListener("click", function(e){
+        e.preventDefault();
+        this.classList.toggle("opened");
+        if(window.screen.width <= 768){
+            document.querySelector("body").classList.toggle("overflow-hidden");
+        }
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+         });
+
+    })
+    const myElement = document.querySelector('.language');
+    document.addEventListener('mousedown', function(event) {
+        if (!myElement.contains(event.target)) {
+            myElement.classList.remove('opened');
+        }
+    });
+  </script>
 </body>
 </html>
